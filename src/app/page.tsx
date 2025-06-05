@@ -10,12 +10,12 @@ import { getKeyPosts, getPosts } from "@/services/posts";
 export default async function Home() {
   const queryClient = new QueryClient();
 
-  queryClient.prefetchQuery({
+  await queryClient.prefetchQuery({
     queryKey: ["posts"],
     queryFn: async () => await getPosts(),
   });
 
-  queryClient.prefetchQuery({
+  await queryClient.prefetchQuery({
     queryKey: ["keyPost", "1"],
     queryFn: async () => await getKeyPosts("1"),
   });
